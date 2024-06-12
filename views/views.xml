@@ -1,0 +1,90 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record id="inherited_model_view_form" model="ir.ui.view">
+    <field name="name">inherited.model.form.inherit.test</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.edit_project"/>
+    <field name="arch" type="xml">
+        <!-- find field description and add the field
+             new_field after it -->
+        <xpath expr="//field[@name='user_id']" position="before">
+          <field name="num"/>
+          <field name="custom_J"/>
+          <field name="laxmi"/>
+        </xpath>
+    </field>
+</record>
+
+  <record id="inherited_model_view_form" model="ir.ui.view">
+    <field name="name">inherited.model.form.inherit.test</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.view_project"/>
+    <field name="arch" type="xml">
+        <!-- find field description and add the field
+             new_field after it -->
+        <xpath expr="//field[@name='display_name']" position="after">
+          
+          <field name="num"/>
+          
+        </xpath>
+    </field>
+</record>
+    <!-- <record model="ir.ui.view" id="project_mode.list">
+      <field name="name">project_mode list</field>
+      <field name="model">project_mode.project_mode</field>
+      <field name="inherit_id" ref="project.view_task_form2"/>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record> -->
+
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="project_mode.action_window">
+      <field name="name">project_mode window</field>
+      <field name="res_model">project_mode.project_mode</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="project_mode.action_server">
+      <field name="name">project_mode server</field>
+      <field name="model_id" ref="model_project_mode_project_mode"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="project_mode" id="project_mode.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="project_mode.menu_1" parent="project_mode.menu_root"/>
+    <menuitem name="Menu 2" id="project_mode.menu_2" parent="project_mode.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="project_mode.menu_1_list" parent="project_mode.menu_1"
+              action="project_mode.action_window"/>
+    <menuitem name="Server to list" id="project_mode" parent="project_mode.menu_2"
+              action="project_mode.action_server"/>
+-->
+
+  </data>
+</odoo>
